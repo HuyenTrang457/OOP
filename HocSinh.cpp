@@ -5,9 +5,9 @@ using namespace std;
 class HocSinh
 {
 public:
-   int msv;
    string ten;
    int tuoi;
+   int msv;
    float ccao, cnang;
    vector<float> diem;
    HocSinh(string s,int age,vector<float> mark){
@@ -30,11 +30,51 @@ public:
    }
    
 };
+
+class LopHoc
+{
+ public:
+   string maLop;
+   vector<HocSinh> mangHS;
+   int soLopHoc;
+   
+   void themHocSinh(HocSinh& A)
+   {
+      mangHS.push_back(A);
+      
+   }
+    void xoaHocSinh(int msv) {
+        for (auto it = mangHS.begin(); it != mangHS.end(); ++it) {
+            if (it->msv == msv) {
+                mangHS.erase(it);
+                break;
+            }
+        }
+    }
+   void hienThiDanhSach(){
+      for(auto it: mangHS){
+         cout<<endl;
+         it.gioiThieu();
+      }
+   }
+   
+};
 int main()
 {
    vector<float> diem2={2.3,4.5,2,4};
-   HocSinh* A= new HocSinh("Ha thanh",12,diem2);
-   A->hocLuc();
+   vector<float> diem3={3,5,2,4};
+    HocSinh A("Ha thanh",12,diem2);
+   A.msv= 1;
+   HocSinh B("Huyen Trang",1,diem2);
+   B.msv=2;
    
+    HocSinh C("Anh Duong ",10,diem3);
+    C.msv=3;
+  LopHoc* myClass = new LopHoc;
+  myClass->themHocSinh(A);
+  myClass->themHocSinh(B);
+  myClass->themHocSinh(C);
+  myClass->xoaHocSinh(2);
+   myClass->hienThiDanhSach();
     return 0;
 }
