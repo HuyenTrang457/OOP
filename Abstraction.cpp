@@ -60,14 +60,16 @@ public:
 	}
 	matrix nhanMaTran(matrix a, matrix b)
 	{
-	   matrix c(getRow(),getCol());
+	   matrix c(a.getRow(),b.getCol()); //ma trận mới có hàng của a, cột của b
 	   if(a.col!= b.row){
 	      cout<<"khong the nhan hai ma tran!";
 	     
 	   }
 	   for(int i=0;i<b.row;i++){
 	      for(int j=0;j<b.col;j++){
-	         
+	         vector<int> r = a.getRowVector(i);
+                vector<int> col = b.getColVector(j);
+                c.setData(i, j, nhanVoHuong(r, col, a.getCol()));
 	      }
 	   }
 	   return c;
@@ -82,13 +84,14 @@ public:
 	}
 	// get cot 
 	vector<int> getColVector(int j){
-	   if(j>=0&&j<data.Col){
+	   if(j>=0&&j<col){
 	      vector<int> vec(row);
 	      for(int i=0;i<row;i++){
 	         vec[i]=data[i][j];
 	      }
+	      return vec;
 	   }
-	   return vec;
+	   
 	   else cout<<"col index out of range";
 	}
 	
@@ -107,7 +110,7 @@ int main()
 	mat.setData(2, 0, 7);
 	mat.setData(2, 1, 8);
 	mat.setData(2, 2, 9);
-   mat.display();
+  // mat.display();
    
    
    matrix m(3, 3);
@@ -122,5 +125,7 @@ int main()
 	m.setData(2, 0, 7);
 	m.setData(2, 1, 8);
 	m.setData(2, 2, 9);
-   m.display();
+   //m.display();
+   matrix c= m.nhanMaTran(mat,m);
+   c.display();
 }
