@@ -1,3 +1,9 @@
+chương trình quản lý máy bay có các đối tượng, thuộc tính sau:
+-  vé máy bay: tên chuyến , giá vé
+- người: tên, tuổi
+- hành khách: kế thừa đối tượng người, có thêm thuộc tính: vé máy bay, số lượng vé
+thiết kế class c++, bổ sung constructer/ setter/ getter nếu cần, viết hàm nhập n hành khách 
+
 #include<iostream>
 using namespace std;
 class veMayBay
