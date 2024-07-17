@@ -1,37 +1,64 @@
-#include<iostream>
+
+#include <iostream>
+
 using namespace std;
-class message
+typedef struct 
 {
-
-};
-class woman
+   int day, month, year;
+} ngay;
+void xuat_ngay(ngay a){
+   cout<<a.day<<"/"<<a.month<<"/"<<a.year;
+}
+class benhNhan
 {
-public: 
-	int age;
-	string name;
-	message* mes;
-	// constructer
-	woman(string n, int a) {
-		cout << "hello" << endl;
-		age = a;
-		name = n;
-	}
-	// destructer:  chỉ áp dụng cấp phát động 
-	~woman() {
-		cout << "delete new woman" << endl;
-		delete mes; // phải xóa vùng nhớ của những class khác trong class này( nếu đó là class động)
-	}
-	void introduce()
-	{
-		cout << " my name is " << name << endl;
-		cout << "tuoi: " << age << endl;
-	}
-	
+private:
+   string hoTen;
+   ngay ngayNhapVien;
+   string maBenhNhan;
+   double tienPhi;
+public:
+   // constructer
+  // benhNhan(string hoTen, ngay ngayNhapVien, string maBenhNhan){};
+   //  maBenhNhan
+   string getmaBenhNhan(){
+      return maBenhNhan;
+   }
+   void setmaBenhNhan(string mbn)
+   {
+      maBenhNhan= mbn;
+   }
+   
+   // hoTen
+   string gethoTen(){
+      return hoTen;
+   }
+   void sethoTen(string ten){
+      hoTen= ten;
+   }
+   //ngay nhap vien 
+   ngay getngayNhapVien(){
+      return ngayNhapVien;
+   }
+   void setngayNhapVien(ngay day){
+      ngayNhapVien= day;
+   }
+   void hienThiThongTin()  {
+         cout << "Ma Benh Nhan: " <<getmaBenhNhan() <<endl;
+         cout << "Ho Ten: " << gethoTen() << endl;
+        cout << "Ngay Nhap Vien: "; xuat_ngay(getngayNhapVien());
+        
+    }
 };
-int main() {
-	// class tĩnh tự động xóa sau mỗi ...( main...)
-	woman* hariwon = new woman("Hariwom", 12);
-
-	delete hariwon;
-	hariwon->introduce();
+int main()
+{
+    ngay date;
+    date.month=3; date.day=12; date.year= 2024;
+   //benhNhan A("huyen trang", date,"TTH123");
+   benhNhan A;
+   A.sethoTen("huyen trang");
+   A.setngayNhapVien(date);
+   A.setmaBenhNhan("TTh23");
+   
+   A.hienThiThongTin();
+    return 0;
 }
