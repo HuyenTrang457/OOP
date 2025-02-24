@@ -1,6 +1,6 @@
+
 #include <iostream>
 using namespace std;
-
 class Log 
 {
    public:
@@ -12,24 +12,24 @@ class Log
    public:
       void setLevel(int level){
          m_logLevel= level;
+         
       }
       void Warn(const char* message){
          if(m_logLevel>=logLevelWarning){
-            cout<<"Warning! "<<message<<endl;
+            cout<<"Warning!"<<message<<endl;
          }
       }
-      void Error(const char* message){
+       void Error(const char* message){
          if(m_logLevel>=logLevelError){
-            cout<<"Error! "<<message<<endl;
+            cout<<"Error!"<<message<<endl;
          }
       }
-      void Info(const char* message){
+       void Info(const char* message){
          if(m_logLevel>=logLevelInfo){
             cout<<"Info! "<<message<<endl;
          }
       }
 };
-
 int main()
 {
     Log Logs;
